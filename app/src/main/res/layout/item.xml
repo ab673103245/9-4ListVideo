@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <!-- 为什么我在这里要使用一个FrameLayout呢？ 因为我里面放的是iv和surfaceView，我要把它们待会修改为从json截取的宽高值，
+    所以我需要一个布局参数，而我只需要获取一次布局参数，我即可设置两个控件都用同一个布局参数，iv和surfaceView都使用同一个
+    布局参数，这样我就少写一些代码了。
+    1、下次注意在这些控件二选一的场合中，使用FrameLayout
+    2、还有宽高值要从网络json获取，来实际设置值这种情况，也要使用FrameLayout，节省了使用布局参数对象的个数，原本要用两个，现在用一个就够了
+    -->
+    <!-- 后加上去的那个会覆盖掉前一个的视图，要注意这个特性，在FrameLayout中。同一个位置，会覆盖。-->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <SurfaceView
+            android:id="@+id/surface_view"
+            android:layout_gravity="center"
+            android:layout_width="200dp"
+            android:layout_height="200dp" />
+
+        <ImageView
+            android:id="@+id/iv"
+            android:layout_gravity="center"
+            android:layout_width="200dp"
+            android:layout_height="200dp" />
+
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>
